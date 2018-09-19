@@ -22,16 +22,6 @@ yesterday2 = str((datetime.datetime.now() - datetime.timedelta(days=1)).strftime
 
 today = str(datetime.datetime.now().strftime("%Y%m%d"))
 
-fit_statsHR = auth2_client.intraday_time_series('activities/heart', base_date=yesterday2, detail_level='1sec')
-
-
-
-heartdf.to_csv('/Users/shsu/Downloads/python-fitbit-master/Heart/heart'+ \
-               yesterday+'.csv', \
-               columns=['Time','Heart Rate'], header=True, \
-               index = False)
-
-
 
 """Sleep data on the night of ...."""
 
@@ -51,21 +41,3 @@ sleepdf.to_csv('/Users/shsu/Downloads/python-fitbit-master/Sleep/sleep' + \
                today+'.csv', \
                columns = ['Time','State','Interpreted'],header=True, 
                index = False)
-
-
-"""Sleep Summary on the night of ...."""
-
-fit_statsSum = auth2_client.sleep(date='today')['sleep'][0]
-
-ssummarydf = pd.DataFrame({'Date':fit_statsSum['dateOfSleep'],
-                'MainSleep':fit_statsSum['isMainSleep'],
-               'Efficiency':fit_statsSum['efficiency'],
-               'Duration':fit_statsSum['duration'],
-               'Minutes Asleep':fit_statsSum['minutesAsleep'],
-               'Minutes Awake':fit_statsSum['minutesAwake'],
-               'Awakenings':fit_statsSum['awakeCount'],
-               'Restless Count':fit_statsSum['restlessCount'],
-               'Restless Duration':fit_statsSum['restlessDuration'],
-               'Time in Bed':fit_statsSum['timeInBed']
-                        } ,index=[0])
-d
