@@ -23,7 +23,7 @@ yesterday2 = str((datetime.datetime.now() - datetime.timedelta(days=1)).strftime
 today = str(datetime.datetime.now().strftime("%Y%m%d"))
 
 
-"""Sleep data on the night of ...."""
+"""Sleep data"""
 
 fit_statsSl = auth2_client.sleep(date='today')
 stime_list = []
